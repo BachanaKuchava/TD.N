@@ -2,16 +2,23 @@ import { useState } from "react"
 import React from 'react'
 
 
-const TaskInput = () => {
+const TaskInput = ({addTask}) => {
 
     const [task, setTask] = useState('');
+    // console.log(task);
+
+    function handleAddTask( event) {
+        event.preventDefault();
+        addTask(task);
+        setTask('');
+    }
 
     function handleInputValue(event) {
         setTask(event.target.value);
     }
   return (
-    <form className='inputField'>
-        <input type="text" placeholder='Add Item'
+    <form className='inputField' onSubmit={handleAddTask    }>
+        <input type="text" value={task} placeholder='Add Item'
         onChange={handleInputValue}/>
         <button className=''>+</button>
 
