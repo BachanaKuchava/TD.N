@@ -9,6 +9,9 @@ const TaskInput = ({addTask}) => {
 
     function handleAddTask( event) {
         event.preventDefault();
+
+        if (task.trim() === '') return ; 
+
         addTask(task);
         setTask('');
     }
